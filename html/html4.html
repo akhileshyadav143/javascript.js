@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+   
+
+function outer(){
+    let userName="om"
+    function inner(){
+        console.log(userName);
+    }
+    // inner()
+    return inner
+}
+let fn=outer()
+fn()
+// outer()
+
+
+
+
+
+//          var id=20;
+//        let student = {
+//     id: 1,
+//     name: "Akhilesh",
+//     ispass: true,
+//     sum: function () {
+//         let s=()=> {
+//         console.log(this.id);
+//     };
+//     s();
+//    }
+// }
+//  student.sum(); 
+   
+       
+// console.log(this);
+// 'use scrict'
+//  function sum(){
+//    console.log(this);
+   
+//  }
+// sum()
+
+//    let student = {
+//     id: 1,
+//     name: "Akhilesh",
+//     ispass: true,
+//     sum: function () {
+//         console.log(this.name);
+//     }
+// };
+
+// student.sum(); 
+         
+       
+
+//            for(let key in student){
+//             console.log(student[key]);
+//            }
+        
+//            student.sum()
+
+        //  let b=30;
+        //  {
+        //     var a=5;
+        //     let b=10;
+        //     const c=40;
+        //  }
+        //  console.log(a);
+        //  console.log(b);
+        //  console.log(c);
+
+        // function sum(){
+        //     let a=5;
+
+        // }
+        // console.log(a);
+        // sum()
+
+    </script>
+</body>
+</html>
