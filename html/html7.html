@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <!-- asyncro programming -->
+     <!-- <script> -->
+        // setTimeout(()=>{
+        //     console.log("A")
+        // },0)
+        //  setTimeout(()=>{
+        //     console.log("c")
+        // },2000)
+        //  setTimeout(()=>{
+        //     console.log("d")
+        // },1000)
+
+        // console.log("b");
+        
+     <!-- </script> -->
+      <script>
+       function step1(fn){
+        setTimeout(()=>{
+            console.log("selecteddd");
+            
+        },5000)
+    }
+    
+ function step1(fn){
+        setTimeout(()=>{
+            console.log("selecteddd");
+            fn()
+        },4000)
+    }
+     function step2(fn){
+        setTimeout(()=>{
+            console.log("photoselect");
+            fn()
+        },3000)
+    }
+     function step3(fn){
+        setTimeout(()=>{
+            console.log(" fillter");
+            fn()
+        },2000)
+    }
+     function step5(fn){
+        setTimeout(()=>{
+            console.log("post");
+            fn()
+        },1000)
+    }
+
+    step1(function(){
+        step2(function(){
+            step3(function(){
+
+            })
+        })
+    })
+
+
+
+
+    
+   
+    
+    
+
+      </script>
+</body>
+</html>
