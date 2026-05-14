@@ -29,15 +29,10 @@
         },5000)
     }
     
- function step1(fn){
-        setTimeout(()=>{
-            console.log("selecteddd");
-            fn()
-        },4000)
-    }
+ 
      function step2(fn){
         setTimeout(()=>{
-            console.log("photoselect");
+            console.log("caption added");
             fn()
         },3000)
     }
@@ -47,7 +42,7 @@
             fn()
         },2000)
     }
-     function step5(fn){
+     function step4(fn){
         setTimeout(()=>{
             console.log("post");
             fn()
@@ -57,6 +52,9 @@
     step1(function(){
         step2(function(){
             step3(function(){
+                step4(function(){
+                    
+                })
 
             })
         })

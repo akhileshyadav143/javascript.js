@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2> </h2>
+    <script>
+        let h2=document.querySelector("h2")
+        fetch("https://jsonplaceholder.typicode.com/todos").then((data)=>{
+            return data.json()
+        }).then((val)=>{
+            console.log(val);
+
+            val.forEach((item)=>{
+            h2.innerHTML += item.title + "<br> <br/>";
+
+            })
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    </script>
+</body>
+</html>
