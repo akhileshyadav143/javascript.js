@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Movie Search (No API Key)</title>
+
+<style>
+  *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial;
+  }
+
+  body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(to right,#ff758c,#ff7eb3);
+  }
+
+  .box{
+    width:400px;
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 0 20px rgba(0,0,0,0.3);
+  }
+
+  input{
+    width:100%;
+    padding:10px;
+    border-radius:10px;
+    border:1px solid #ccc;
+  }
+
+  button{
+    margin-top:10px;
+    padding:10px 20px;
+    border:none;
+    background:#05b75b;
+    color:rgb(251, 252, 245);
+    border-radius:10px;
+    cursor:pointer;
+  }
+
+  .result{
+    margin-top:20px;
+    text-align:left;
+  }
+
+  img{
+    width:120px;
+    margin-top:10px;
+  }
+
+</style>
+
+</head>
+<body>
+
+<div class="box">
+
+  <h1>🎬 Movie Search</h1>
+
+  <input type="text" id="movie" placeholder="Enter movie name">
+
+  <button onclick="searchMovie()">Search</button>
+
+  <div class="result" id="result"></div>
+
+</div>
+
+<script>
+
+async function searchMovie(){
+
+  let movie = document.getElementById("movie").value;
+
+  if(movie === ""){
+    alert("Enter movie name");
+    return;
+  }
+
+  document.getElementById("result").innerHTML = "Loading...";
+
+  try{
+
+    let res = await fetch(
+      `https://api.tvmaze.com/search/shows?q=${movie}`
+    );
+
+    let data = await res.json();
+
+    if(data.length === 0){
+      document.getElementById("result").innerHTML = "❌ No result found";
+      return;
+    }
+
+    let html = "";
+
+    data.forEach(item => {
+
+      let show = item.show;
+
+      let img = show.image ? show.image.medium : "";
+
+      html += `
+        <div style="margin-bottom:15px;">
+          <h3>${show.name}</h3>
+          <img src="${img}">
+          <p><b>Type:</b> ${show.type}</p>
+          <p><b>Language:</b> ${show.language}</p>
+          <p><b>Rating:</b> ${show.rating.average || "N/A"}</p>
+        </div>
+      `;
+    });
+
+    document.getElementById("result").innerHTML = html;
+
+  }
+  catch(error){
+    document.getElementById("result").innerHTML = "⚠ Error fetching data";
+  }
+
+}
+
+// Enter key support
+document.getElementById("movie").addEventListener("keypress", function(e){
+  if(e.key === "Enter"){
+    searchMovie();
+  }
+});
+
+</script>
+
+</body>
+</html>
